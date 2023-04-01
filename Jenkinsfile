@@ -21,11 +21,6 @@ pipeline {
             }
         }
 }
-post {
-        always {
-            sh 'docker logout'
-        }
-}
     post {
             success {
                 slackSend "Build deployed successfully "
