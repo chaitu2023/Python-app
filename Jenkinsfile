@@ -20,11 +20,10 @@ pipeline {
                 sh ' docker push pavanvc/pythonapp:$BUILD_NUMBER'
             }
         }
+    }
 post {
             success {
                 slackSend "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
             }
         }
 }
-}
-
