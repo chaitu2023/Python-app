@@ -17,7 +17,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh ' docker push pavanvc/pythonapp:$BUILD_NUMBER'
+                sh ' docker push pavanc/pythonapp:$BUILD_NUMBER'
             }
         }
     }
