@@ -21,17 +21,15 @@ pipeline {
             }
         }
     }
- post {
-        success {
-            emailext body: 'Your pipeline has completed successfully.',
-                     subject: 'Pipeline Success Notification',
-                     to: 'pavanvc347@gmail.com'
-        }
-        failure {
-            emailext body: 'Your pipeline has failed.',
-                     subject: 'Pipeline Failure Notification',
-                     to: 'pavanvc347@gmail.com'
-        }
+<<<<<<< HEAD
+=======
+post {
+            success {
+                slackSend message: "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+            }
+    failure {
+        slackSend message: "Build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+>>>>>>> parent of 0152a20 (Update Jenkinsfile)
     }
 }
 
