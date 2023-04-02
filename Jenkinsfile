@@ -21,15 +21,17 @@ pipeline {
             }
         }
     }
-post {
-        always {
-            sh 'docker logout'
+ post {
+        success {
+            emailext body: 'Your pipeline has completed successfully.',
+                     subject: 'Pipeline Success Notification',
+                     to: 'pavanvc347@gmail.com'
         }
-            success {
-                slackSend message: "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
-            }
-    failure {
-        slackSend message: "Build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        failure {
+            emailext body: 'Your pipeline has failed.',
+                     subject: 'Pipeline Failure Notification',
+                     to: 'pavanvc347@gmail.com'
+        }
     }
 }
-  }
+
